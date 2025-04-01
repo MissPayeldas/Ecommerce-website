@@ -1,0 +1,102 @@
+/*-----------------------new phones--------------------------------------------------------- -----------------    ---------------/
+/* General Reset */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Main Container */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Category Buttons */
+.category-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.category-buttons button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.category-buttons button:hover {
+    background-color: #0056b3;
+}
+
+/* Phone Category */
+.phone-category {
+    display: none;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.phone-category.active {
+    display: block;
+}
+
+/* Phone Card */
+.phone {
+    background: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.phone img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.phone h3 {
+    color: #333;
+}
+
+.phone p {
+    color: #666;
+}
+
+
+/* Navigation Bar - Fixed at Bottom */
+nav {
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    position: fixed; /* Changed from initial to fixed */
+    width: 100%;
+    bottom: 0; /* Changed from top to bottom */
+    left: 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 18px;
+    padding: 8px 12px;
+}
+
+nav a:hover {
+    background: #ff9800;
+    border-radius: 5px;
+}

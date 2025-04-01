@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="css/cart.css">
+</head>
+<body>
+    <header>
+        <h1>Your Cart</h1>
+    </header>
+
+    <main>
+        <table id="cart-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items"></tbody>
+        </table>
+        <h3>Total: ₹<span id="total-price">0</span></h3>
+        <button id="checkout-btn">Proceed to Checkout</button>
+    </main>
+
+    <script src="../public/css/js/cart.js"></script>
+</body>
+</html>
+
+

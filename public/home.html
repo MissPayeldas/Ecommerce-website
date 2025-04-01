@@ -1,0 +1,237 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SBSC - Home</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+    
+        <section class="hero">
+            <h2>Best Phones at the Best Prices!</h2>
+            <p>Shop from a wide range of new and old phones.</p>
+            <a class="btn">Shop Now</a>
+        </section>
+        
+        <section class="categories -search">
+                    <div class="search-container">
+                    <form action="search.html" method="GET" class="search-form">
+                        <input type="text" name="query" placeholder="Search..." required>
+                        <button type="submit">Search</button>
+                    </form>
+                    <span class="address">123 Street,kolkata, India</span>
+                    <a href="cart.html">🛒</a>
+                    <a href="user.html">👤</a>
+                </div>
+            <!-- This is where the search results will be displayed -->
+            <div id="searchResults"></div>
+        </section>
+
+        <header>
+            <h2> Item Categories</h2>
+        </header>
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <section class="categories -search">
+            <!-- Categories Section -->
+            <!-- Categories Section -->
+            <div class="categories-container">
+                <div class="category-box new">
+                    <img src="../assets/mi-old-phone.jpg" alt="New Phones" class="category-image">
+                    <h3>New Phones</h3>
+                    <p>Latest models with cutting-edge technology.</p>
+                    <a href="new-ph.html" class="view-btn">View New Phones</a>
+                </div>
+                <div class="category-box old">
+                    <img src="../assets/oppo-old-phone.jpg" alt="Old Phones" class="category-image">
+                    <h3>Old Phones</h3>
+                    <p>Affordable and quality checked used phones.</p>
+                    <a href="old-ph.html" class="view-btn">View Old Phones</a>
+                </div>
+                <div class="category-box tv">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwXmyPzHjJZpmNGg6FQDPMKta4iPQzmEe0HA&s" alt="TVs" class="category-image">
+                    <h3>TVs</h3>
+                    <p>Explore our range of smart and LED TVs.</p>
+                    <a href="tv.html" class="view-btn">View TVs</a>
+                </div>
+                <div class="category-box airpods">
+                    <img src="data:image/jpeg;base64,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" alt="AirPods" class="category-image">
+                    <h3>AirPods</h3>
+                    <p>Wireless audio experience with AirPods.</p>
+                    <a href="airpods.html" class="view-btn">View AirPods</a>
+                </div>
+            </div>
+            </section>
+        </main>
+    
+
+    <main>
+        <section id="old" class="item-category">
+            <div class="product-list">
+            <!--mi-->
+                <div class="product-card">
+                    <img src="../assets/redmi-note-13-pro.jpg" alt="Redmi Note 13 Pro">
+                    <div>
+                        <h3>Redmi Note 13 Pro 5G (Coral Purple, 128 GB)</h3>
+                        <p class="rating">⭐⭐⭐⭐ 4.2 (1,200 Reviews)</p>
+                        <p>Price: ₹25999</p>
+                        <button class="add-to-cart" data-name="Redmi Note 13 Pro 5G" data-price="25999" data-image="../assets/redmi-note-13-pro.jpg">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="../assets/redmi-12.jpg" alt="Redmi 12 5G">
+                    <div>
+                        <h3>Redmi 12 5G (Jade Black, 128 GB)</h3>
+                        <p class="rating">⭐⭐⭐⭐ 4.2 (1,200 Reviews)</p>
+                        <p>Price: ₹12895</p>
+                        <button class="add-to-cart" data-name="Redmi 12 5G" data-price="12895" data-image="../assets/redmi-12.jpg">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="../assets/redmi-note-12.jpg" alt="Redmi Note 12 5G">
+                    <div>
+                        <h3>Redmi Note 12 5G (Sunrise Gold, 128 GB)</h3>
+                        <p class="rating">⭐⭐⭐⭐ 4.2 (1,200 Reviews)</p>
+                        <p>Price: ₹16499</p>
+                        <button class="add-to-cart" data-name="Redmi Note 12 5G" data-price="16499" data-image="../assets/redmi-note-12.jpg">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="../assets/redmi-a2.jpg" alt="Redmi A2">
+                    <div>
+                        <h3>Redmi A2 (Sea Green, 64 GB)</h3>
+                        <p class="rating">⭐⭐⭐⭐ 4.2 (1,200 Reviews)</p>
+                        <p>Price: ₹5299</p>
+                        <button class="add-to-cart" data-name="Redmi A2" data-price="5299" data-image="../assets/redmi-a2.jpg">Add to Cart</button>
+                    </div>
+                </div>
+                <!--realme -->
+                <div class="product-card">
+                    <img src="../assets/mi-old-phone.jpg" alt="MI Old Phone">
+                    <div>
+                        <h2>MI 5A</h2>
+                        <p class="rating">⭐⭐⭐⭐ 4.2 (1,200 Reviews)</p>
+                        <p>price: ₹4999</p>
+                        <button class="add-to-cart" data-name="MI 5A" data-price="4999" data-image="../assets/mi-old-phone.jpg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div> <!-- Corrected closing div tag -->
+                
+                <div class="product-card">
+                    <img src="../assets/realme-old-phone.jpg" alt="Realme Old Phone">
+                    <div>
+                        <h2>Realme C1 <br> 32, 64GB</h2>
+                        <p class="rating">⭐⭐⭐⭐ 4.2 (1,200 Reviews)</p>
+                        <p>Price: ₹4599</p>
+                        <button class="add-to-cart" data-name="Realme C1" data-price="4599" data-image="../assets/realme-old-phone.jpg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <img src="../assets/oppo-old-phone.jpg" alt="Oppo Old Phone">
+                    <div>
+                        <h2>Oppo A37</h2>
+                        <p class="rating">⭐⭐⭐⭐ 4.2 (1,200 Reviews)</p>
+                        <p>Price: ₹5499</p>
+                        <button class="add-to-cart" data-name="Oppo A37" data-price="5499" data-image="../assets/oppo-old-phone.jpg">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="../assets/Vivo Y200e 5G.jpg" alt="Vivo Old Phone">
+                    <div>
+                        <h2>Vivo Y71</h2>
+                        <p class="rating">⭐⭐⭐⭐ 4.2 (1,200 Reviews)</p>
+                        <p>Price: ₹6299</p>
+                        <button class="add-to-cart" data-name="Vivo Y71" data-price="6299" data-image="../assets/Vivo Y200e 5G.jpg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="../assets/realme-gt6.jpg" alt="Realme GT 6">
+                        <div>
+                            <h3>Realme GT6 256GB</h3>
+                            <p class="rating">⭐⭐⭐⭐ 4.2 (1,200 Reviews)</p>
+                            <p>Price: ₹33999</p>
+                            <button class="add-to-cart"  data-name="Realme GT6 " data-price="33999" data-image="../assets/realme-gt6.jpg">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="../assets/realme-13-pro.jpg" alt="Realme 13 Pro">
+                        <div>
+                            <h3>Realme 13 Pro</h3>
+                            <p class="rating">⭐⭐⭐⭐ 4.2 (1,200 Reviews)</p>
+                            <p>Price: ₹22999</p>
+                            <button class="add-to-cart"  data-name="Realme 13 Pro" data-price="22999" data-image="../assets/realme-13-pro.jpg">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="../assets/realme-narzo-n61.jpg" alt="Realme NARZO N61">
+                        <div>
+                            <h3>Realme NARZO N61 (Voyage Blue, 6GB RAM + 128GB Storage)</h3>
+                            <p>90Hz Eye Comfort Display | IP54 Dust & Water Resistance | 48-Month Fluency | Charger in The Box</p>
+                            <p class="rating">⭐⭐⭐⭐</p>
+                            <p class="price">₹10999 </p>
+                            <button class="add-to-cart"  data-name="Realme NARZO N61" data-price="10999 " data-image="../assets/realme-narzo-n61.jpg">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="../assets/realme-13-5g.jpg" alt="Realme 13 5G">
+                        <div>
+                            <h3>Realme 13 5G (8GB RAM,128GB Storage, Dark Purple)</h3>
+                            <p>Latest 5G smartphone with powerful performance</p>
+                            <p class="rating">⭐⭐⭐⭐ 4.5 (2,500 Reviews)</p>
+                            <p class="price">₹22999</p>
+                            <button class="add-to-cart"  data-name="Realme 13 5G" data-price="22999" data-image="../assets/realme-13-5g.jpg">Add to Cart</button>
+                        </div>
+                    </div> 
+                    <div class="product-card">
+                        <img src="../assets/realme-c63.jpg" alt="Realme C63 4G">
+                        <div>
+                            <h3>Realme C63 4G (8GB RAM, 256GB Storage)</h3>
+                            <p>6.7-inch display | High Performance | Long Battery Life</p>
+                            <p class="rating">⭐⭐⭐⭐ 4.5 (1,500 Reviews)</p>
+                            <p class="price">₹14999 </p>
+                            <button class="add-to-cart" data-name="Realme C63 4G" data-price="14999" data-image="../assets/realme-c63.jpg">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="../assets/oppo-reno-12.jpg "alt="OPPO Reno12 5G">
+                        <div>
+                            <h2>Vivo Y71</h2>
+                            <p class="rating">⭐⭐⭐⭐ 4.2 (1,200 Reviews)</p>
+                            <p>Price: ₹6,299</p>
+                            <button class="add-to-cart" data-name="Realme C1" data-price="4999" data-image="">Add to Cart</button>
+                        </div>
+                    </div>
+                    <!--vivo-->
+                    <div class="product-card">
+                        <img src="../assets/vivo-v40-pro.jpg" alt="Vivo new Phone">
+                        <div>
+                            <h2>Vivo Y40 PRO </h2>
+                            <p class="rating">⭐⭐⭐⭐ 4.2 (1,200 Reviews)</p>
+                            <p>Price: ₹9299</p>
+                            <button class="add-to-cart" data-name="Vivo Y40 PRO" data-price="9299" data-image="./assets/vivo-v40-pro.jpg">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="../assets/Vivo Y200e 5G.jpg" alt="Vivo new Phone">
+                        <div>
+                            <h2>Vivo Y200e 5G</h2>
+                            <p class="rating">⭐⭐⭐⭐ 4.2 (1,200 Reviews)</p>
+                            <p>Price: ₹8299</p>
+                            <button class="add-to-cart" data-name="Vivo Y200e 5G" data-price="8299" data-image="../assets/Vivo Y200e 5G.jpg">Add to Cart</button>
+                        </div>
+            </div>
+        </section>
+    </main>
+    
+    <script src="../public/css/js/script.js"></script>
+</body>
+</html>
+
+

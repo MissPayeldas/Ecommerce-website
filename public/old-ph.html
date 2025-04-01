@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Old Phones</title>
+    <link rel="stylesheet" href="./css/old ph.css">
+</head>
+<body>
+
+
+    <section class="categories -search">
+        <div class="search-container">
+        <form action="search.html" method="GET" class="search-form">
+            <input type="text" name="query" placeholder="Search..." required>
+            <button type="submit">Search</button>
+        </form>
+        <span class="address">123 Street, City, Country</span>
+        <a href="cart.html">🛒</a>
+        <a href="user.html">👤</a>
+    </div>
+<!-- This is where the search results will be displayed -->
+<div id="searchResults"></div>
+</section>
+
+
+    <main>
+        <section id="old" class="phone-category">
+            <div class="product-list">
+                <div class="product-card">
+                    <img src="../assets/mi-old-phone.jpg" alt="MI Old Phone">
+                    <div>
+                        <h2>MI 5A</h2>
+                        <p>price: ₹4999</p>
+                        <button class="add-to-cart" data-name="MI 5A" data-price="4999" data-image="../assets/mi-old-phone.jpg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div> <!-- Corrected closing div tag -->
+                
+                <div class="product-card">
+                    <img src="../assets/realme-old-phone.jpg" alt="Realme Old Phone">
+                    <div>
+                        <h2>Realme C1 <br> 32, 64GB</h2>
+                        <p>Price: ₹4599</p>
+                        <button class="add-to-cart" data-name="Realme C1" data-price="4599" data-image="../assets/realme-old-phone.jpg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <img src="../assets/oppo-old-phone.jpg" alt="Oppo Old Phone">
+                    <div>
+                        <h2>Oppo A37</h2>
+                        <p>Price: ₹5499</p>
+                        <button class="add-to-cart" data-name="Oppo A37" data-price="5499" data-image="../assets/oppo-old-phone.jpg">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <img src="../assets/Vivo Y200e 5G.jpg" alt="Vivo Old Phone">
+                    <div>
+                        <h2>Vivo Y71</h2>
+                        <p>Price: ₹6299</p>
+                        <button class="add-to-cart" data-name="Vivo Y71" data-price="6299" data-image="../assets/Vivo Y200e 5G.jpg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <script src="../public/css/js/cart.js" defer></script>
+</body>
+</html>
