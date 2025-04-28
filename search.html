@@ -1,0 +1,237 @@
+<!-----search.html------------>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SBSC - Search Results</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color:  #0056b3;;
+            color: white;
+        }
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            display: flex; /* Use flexbox for horizontal alignment */
+            justify-content: center; /* Center items horizontally */
+            align-items: center; /* Center items vertically */
+        }
+        .search-container input[type="text"] {
+            width: 70%; /* Adjusted width for the input */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .search-container button {
+            padding: 10px 15px;
+            background-color: #6171ff;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px; /* Space between search button and input */
+        }
+        .search-container button:hover {
+            background-color: #e65c50;
+        }
+        .view-cart-button {
+            padding: 10px 15px;
+            background-color: #28a745; /* Green color for the cart button */
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px; /* Space between search button and cart button */
+        }
+        .view-cart-button:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+        .results {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center items horizontally */
+        }
+        .product-box {
+            width: 80%; /* Set a fixed width for the product boxes */
+            max-width: 400px; /* Optional: Set a maximum width */
+            margin: 10px 0; /* Vertical margin for spacing */
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for depth */
+        }
+        .product-box img {
+            width: 100%; /* Keep the image responsive */
+            height: auto;
+        }
+        .product-box-text {
+            margin-top: 10px;
+        }
+        #notification {
+            margin-top: 10px;
+            color: green;
+            font-weight: bold;
+        }
+        #cartContainer {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        #cartContainer h2 {
+            margin: 0 0 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>SBSC - Search Results</h1>
+    <p>Find the best phones at the best prices!</p>
+</header>
+
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search for phones...">
+    <button onclick="performSearch()">Search</button>
+    <a href="cart.html">
+        <button class="view-cart-button">View Cart</button>
+    </a>
+</div>
+
+<div class="results" id="resultsContainer">
+    <!-- Search results will be displayed here -->
+</div>
+
+<div id="notification">
+    <!-- Notification message will be displayed here -->
+</div>
+
+<div id="cartContainer">
+    <h2>Your Cart</h2>
+    <!-- Cart items will be displayed here -->
+</div>
+
+<script>
+    const products = [
+        { name: "Redmi Note 13 Pro 5G", price: 25999, image: "../assets/redmi-note-13-pro.jpg", description: "Redmi Note 13 Pro 5G (Coral Purple, 128 GB)" },
+        { name: "Redmi 12 5G", price: 12895, image: "../assets/redmi-12.jpg", description: "Redmi 12 5G (Jade Black, 128 GB)" },
+        { name: "Redmi Note 12 5G", price: 16499, image: "../assets/redmi-note-12.jpg", description: "Redmi Note 12 5G (Sunrise Gold, 128 GB)" },
+        { name: "Redmi A2", price: 5299, image: "../assets/redmi-a2.jpg", description: "Redmi A2 (Sea Green, 64 GB)" },
+        { name: "MI 5A", price: 4999, image: "../assets/mi-old-phone.jpg", description: "MI 5A" },
+        { name: "Realme C1", price: 4599, image: "../assets/realme-old-phone.jpg", description: "Realme C1 (32, 64GB)" },
+        { name: "Oppo A37", price: 5499, image: "../assets/oppo-old-phone.jpg", description: "Oppo A37" },
+        { name: "Vivo Y71", price: 6299, image: "../assets/Vivo Y200e 5G.jpg", description: "Vivo Y71" },
+        { name: "Realme GT6", price: 33999, image: "../assets/realme-gt6.jpg", description: "Realme GT6 256GB" },
+        { name: "Realme 13 Pro", price: 22999, image: "../assets/realme-13-pro.jpg", description: "Realme 13 Pro" },
+        { name: "Realme NARZO N61", price: 10999, image: "../assets/realme-narzo-n61.jpg", description: "Realme NARZO N61 (Voyage Blue, 6GB RAM + 128GB Storage)" },
+        { name: "Realme 13 5G", price: 22999, image: "../assets/realme-13-5g.jpg", description: "Realme 13 5G (8GB RAM, 128GB Storage, Dark Purple)" },
+        // Add more products as needed
+    ];
+
+    // Function to perform the search
+    function performSearch() {
+        const query = document.getElementById('searchInput').value.toLowerCase();
+        const resultsContainer = document.getElementById('resultsContainer');
+        resultsContainer.innerHTML = ''; // Clear previous results
+
+        const filteredResults = products.filter(product => 
+            product.name.toLowerCase().includes(query) || 
+            product.description.toLowerCase().includes(query)
+        );
+
+        if (filteredResults.length > 0) {
+            filteredResults.forEach(product => {
+                const productBox = document.createElement('div');
+                productBox.className = 'product-box';
+                productBox.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}"/>
+                    <div class="product-box-text">
+                        <h3>${product.name}</h3>
+                        <p>Price: ₹${product.price}</p>
+                        <button class="product-cart-btn" data-name="${product.name}" data-price="${product.price}" data-image="${product.image}" onclick="addToCart(event)">
+                            Add To Cart
+                        </button>
+                    </div>
+                `;
+                resultsContainer.appendChild(productBox);
+            });
+        } else {
+            resultsContainer.innerHTML = '<p>No results found.</p>';
+        }
+    }
+
+    // Initialize cart as an empty array or retrieve from local storage
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // Function to add product to the cart
+    function addToCart(event) {
+        event.preventDefault();
+        const productName = event.target.getAttribute('data-name');
+        const productPrice = parseFloat(event.target.getAttribute('data-price'));
+        const productImage = event.target.getAttribute('data-image');
+
+        // Check if the product already exists in the cart
+        const existingProductIndex = cart.findIndex(item => item.name === productName);
+        if (existingProductIndex > -1) {
+                // If it exists, increase the quantity
+            cart[existingProductIndex].quantity += 1;
+        } else {
+            // If it doesn't exist, add it to the cart
+            cart.push({
+                name: productName,
+                price: productPrice,
+                image: productImage,
+                quantity: 1
+            });
+        }
+
+        // Save cart to local storage
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        // Update the cart display
+        updateCartDisplay();
+    }
+
+    // Function to update the cart display
+    function updateCartDisplay() {
+        const cartContainer = document.getElementById('cartContainer');
+        cartContainer.innerHTML = '<h2>Your Cart</h2>'; // Reset cart display
+
+        if (cart.length === 0) {
+            cartContainer.innerHTML += '<p>Your cart is empty.</p>';
+            return;
+        }
+
+        cart.forEach(item => {
+            const cartItem = document.createElement('div');
+            cartItem.innerHTML = `
+                <div>
+                    <img src="${item.image}" alt="${item.name}" style="width: 50px; height: auto;"/>
+                    <span>${item.name} - ₹${item.price} x ${item.quantity}</span>
+                </div>
+            `;
+            cartContainer.appendChild(cartItem);
+        });
+    }
+
+    // Initial call to display cart items on page load
+    updateCartDisplay();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,173 @@
+
+<!-----product details.html------->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        main {
+            max-width: 1200px; /* Set a maximum width for the main content */
+            margin: 0 auto; /* Center the main content */
+            padding: 0 2in; /* 2 inches padding on left and right */
+        }
+        
+        #product-detail {
+            display: flex; /* Use flexbox for layout */
+            margin-bottom: 40px;
+            justify-content: center; /* Center the content */
+            
+        }
+        
+        #product-detail img {
+            width: 300px; /* Adjust as needed */
+            height: auto;
+            margin-right: 20px; /* Space between image and details */
+        }
+        
+        #product-info {
+            max-width: 400px; /* Limit width of product details */
+        }
+        
+        #similar-products {
+            margin-top: 40px;
+        }
+        
+        .product-list {
+            display: flex; /* Use flexbox for similar products */
+            flex-wrap: wrap; /* Allow wrapping to the next line */
+            justify-content: center; /* Space between items */
+        }
+        
+        .product-card {
+            flex: 0 1 calc(25% - 10px); /* 4 items per row with space */
+            margin: 5px; /* Space between product cards */
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+        }
+        
+        .product-card img {
+            width: 100%; /* Responsive image */
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+<main>
+    <section id="product-detail">
+        <img id="product-image" src="" alt="">
+        <div id="product-info">
+            <h2 id="product-title"></h2>
+            <p id="product-description"></p>
+            <p id="product-price"></p>
+            <button id="add-to-cart">Add to Cart</button>
+        </div>
+    </section>
+
+    <section id="similar-products">
+        <h3>Similar Products</h3>
+        <div class="product-list" id="similarProductList">
+            <!-- Similar products will be dynamically generated here -->
+        </div>
+    </section>
+</main>
+
+<script type="module">
+    import products from './product.js'; // Adjust the path as necessary
+
+    // Function to get URL parameters
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+
+    const productId = getQueryParam('id'); // Get the product ID from the URL
+    const product = products.find(p => p.id == productId); // Find the product by ID
+
+    if (product) {
+        // Display product details
+        document.getElementById('product-title').innerText = product.title;
+        document.getElementById('product-image').src = product.image;
+        document.getElementById('product-description').innerText = product.description;
+        document.getElementById('product-price').innerText = `Price: ₹${parseFloat(product.price.replace(/[₹,]/g, '')).toFixed(2)}`; // Format price
+
+        // Add event listener for "Add to Cart" button
+        const addToCartButton = document.getElementById('add-to-cart');
+        addToCartButton.addEventListener('click', () => {
+            // Create a product object
+            const cartProduct = {
+                name: product.title,
+                price: parseFloat(product.price.replace(/[₹,]/g, '')), // Ensure price is a number
+                image: product.image
+            };
+
+            // Get existing cart items from local storage
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Check if the product already exists in the cart
+            const existingProductIndex = cart.findIndex(item => item.name === cartProduct.name);
+
+            if (existingProductIndex > -1) {
+                // If the product exists, you can update the quantity or just notify the user
+                // Here we do nothing since you requested no alerts
+            } else {
+                // Add the new product to the cart
+                cart.push(cartProduct);
+                // Save the updated cart back to local storage
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+                // Display a message that the product has been added to the cart
+                const message = document.createElement('div');
+                message.textContent = `${cartProduct.name} has been added to your cart!`;
+                message.className = 'cart-message';
+                document.body.appendChild(message);
+                setTimeout(() => {
+                    message.remove();
+                }, 3000); // Remove message after 3 seconds
+            }
+
+            // Update button text and disable it
+            addToCartButton.innerText = "Added"; // Change button text
+            addToCartButton.disabled = true; // Disable the button
+        });
+
+        // Display similar products (for simplicity, we can show a limited number of products)
+        const similarProductList = document.getElementById('similarProductList');
+        let similarProductCount = 0; // Counter for similar products
+
+        products.forEach(similarProduct => {
+            if (similarProduct.id !== product.id && similarProductCount < 3) { // Limit to 4 similar products
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <a href="product-detail.html?id=${similarProduct.id}">
+                        <img src="${similarProduct.image}" alt="${similarProduct.title}">
+                    </a>
+                    <h4>${similarProduct.title}</h4>
+                    <p>Price: ₹${parseFloat(similarProduct.price.replace(/[₹,]/g, '')).toFixed(2)}</p> <!-- Format price -->
+                `;
+                similarProductList.appendChild(productCard);
+                similarProductCount++; // Increment the counter
+            }
+        });
+    } else {
+        // Handle case where product is not found
+        document.getElementById('product-detail').innerText = 'Product not found.';
+    }
+</script>
+</body>
+</html>

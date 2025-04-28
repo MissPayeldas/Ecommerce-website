@@ -1,0 +1,92 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Success</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .success-icon {
+            font-size: 50px;
+            color: #28a745;
+        }
+        .order-details {
+            text-align: left;
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f1f1f1;
+        }
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-icon">✓</div>
+        <h1>Order Placed Successfully!</h1>
+        
+        <div class="order-details">
+            <h2>Order Summary</h2>
+            <p id="orderItems">No items in your order.</p>
+            <p><strong>Total Amount:</strong> ₹<span id="orderTotal">0</span></p>
+            <p><strong>Payment Method:</strong> <span id="paymentMethod">N/A</span></p>
+        </div>
+
+        <p>Thank you for your purchase! Your flowers will be delivered soon.</p>
+        <a href="index.html" class="button">Continue Shopping</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const paymentMethod = urlParams.get('payment') || 'N/A';
+            
+            // Display payment method
+            document.getElementById('paymentMethod').textContent = paymentMethod.toUpperCase();
+            
+            // Retrieve and display total amount
+            const totalAmount = localStorage.getItem('cartTotal') || '0';
+            document.getElementById('orderTotal').textContent = totalAmount;
+
+            // Retrieve and display cart items
+            const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+            if (cartItems.length > 0) {
+                document.getElementById('orderItems').innerHTML = cartItems
+                    .map(item => `${item.name} - ₹${item.price}<br>`)
+                    .join('');
+            } else {
+                document.getElementById('orderItems').textContent = 'No items in your order.';
+            }
+        });
+    </script>
+</body>
+</html>

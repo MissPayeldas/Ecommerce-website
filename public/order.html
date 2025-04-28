@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Orders - SBSC</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header {
+      background: #007bff;
+      color: white;
+      padding: 15px;
+      font-size: 24px;
+    }
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      padding: 12px;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+    th {
+      background: #007bff;
+      color: white;
+    }
+    .no-orders {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Your Orders</h1>
+  </header>
+  <main>
+    <div id="orders-container">
+      <!-- Orders will be displayed here -->
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Retrieve orders from localStorage.
+      // Example order structure:
+      // orders = [
+      //   { id: "12345", date: "2025-03-20", total: 2500, items: ["Product A", "Product B"] },
+      //   { id: "12346", date: "2025-03-21", total: 1500, items: ["Product C"] }
+      // ];
+      let orders = JSON.parse(localStorage.getItem("orders")) || [];
+      const container = document.getElementById("orders-container");
+
+      if (orders.length === 0) {
+        container.innerHTML = "<p class='no-orders'>You have not placed any orders yet.</p>";
+      } else {
+        // Create a table to display orders.
+        let table = document.createElement("table");
+        let thead = document.createElement("thead");
+        thead.innerHTML = "<tr><th>Order ID</th><th>Date</th><th>Total (₹)</th><th>Items</th></tr>";
+        table.appendChild(thead);
+
+        let tbody = document.createElement("tbody");
+        orders.forEach((order, index) => {
+          let row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${order.id || index + 1}</td>
+            <td>${order.date || "N/A"}</td>
+            <td>${order.total ? order.total.toFixed(2) : "0.00"}</td>
+            <td>${order.items ? order.items.join(", ") : "N/A"}</td>
+          `;
+          tbody.appendChild(row);
+        });
+        table.appendChild(tbody);
+        container.appendChild(table);
+      }
+    });
+  </script>
+</body>
+</html>

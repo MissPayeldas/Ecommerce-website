@@ -1,0 +1,321 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>SBSC - Home</title>
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="shortcut icon" href="images/fav-icon.png">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
+    <style>
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 0 2in; /* 2 inches padding on left and right */
+            margin: 0; /* Remove default margin */
+        }
+        .product-card {
+            width: calc(25% - 1in); /* Adjust width for 4 items per row with 1 inch space */
+            margin: 0.5in; /* 0.5 inch margin for spacing between products */
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+            padding: 10px;
+        }
+        .product-card img {
+            width: 100%; /* Responsive image */
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <h2>Best Phones at the Best Prices!</h2>
+        <p>Shop from a wide range of new and old phones.</p>
+        <a class="btn">Shop Now</a>
+    </section>
+    
+    <section class="categories -search">
+        <div class="search-container">
+            <div class="logo">
+                <img src="../assets/SbSC .png" alt="sbsc-Logo" width="200" height="auto">
+            </div>
+            <form action="search.html" method="GET" class="search-form">
+                <input type="text" name="query" placeholder="Search..." required>
+                <button type="submit">Search</button>
+            </form>
+            <span class="address">123 Street, Kolkata, India</span>
+            <a href="cart.html">🛒</a>
+            <a href="user.html">👤</a>
+            <button id="logout-btn">Logout</button>
+            <div id="searchResults"></div>
+        </div>
+    </section>
+    <
+
+    <main class="main-content">
+        <section class="categories -search">
+            <div class="categories-container">
+                <h2>Items Categories</h2>
+                <div class="category-box new">
+                    <img src="../assets/mi-old-phone.jpg" alt="New Phones" class="category-image">
+                    <h3>New Phones</h3>
+                    <p>Latest models with cutting-edge technology.</p>
+                    <a href="new-ph.html" class="view-btn">View New Phones</a>
+                </div>
+                <div class="category-box old">
+                    <img src="../assets/oppo-old-phone.jpg" alt="Old Phones" class="category-image">
+                    <h3>Old Phones</h3>
+                    <p>Affordable and quality checked used phones.</p>
+                    <a href="old-ph.html" class="view-btn">View Old Phones</a>
+                </div>
+                <div class="category-box tv">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwXmyPzHjJZpmNGg6FQDPMKta4iPQzmEe0HA&s" alt="TVs" class="category-image">
+                    <h3>TVs</h3>
+                    <p>Explore our range of smart and LED TVs.</p>
+                    <a href="tv.html" class="view-btn">View TVs</a>
+                </div>
+                <div class="category-box airpods">
+                    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAJQAlAMBIgACEQEDEQH/xAAbAAACAwEBAQAAAAAAAAAAAAAABAECAwUGB//EADgQAAEDAgQEAwUHAwUAAAAAAAEAAgMEEQUSITEyQVFhBhMiFHGBkaEjM0JSkrHRB2JyJFOiweH/xAAWAQEBAQAAAAAAAAAAAAAAAAAAAQL/xAAZEQEBAQADAAAAAAAAAAAAAAAAARESITH/2gAMAwEAAhEDEQA/APuBNhcpd73POmgVp3agAqmwVgo8tY0uebNG65FZiD3ktiORnUblaYnU53GJh9Dd+5XKkcqge4O1cST3KvDUSREGORze19EsSoDrIO/SYk19mTgA/mGxXR0XlY3rpUVc6ABj7uj+rUHYQqte17Q5pBadiFN0ErGpqI6dt378mjcrOsrWwXYz1Sft71xZpXPcXPcS47koN6nEJ5bgO8tvRqSPqN3G56lZveoBugcp6iaE/ZSEDpuF2qKrbUtsRlkG7V5trk3TyFjmuabEc0Ho9QbjdbxSZtDulKeYTRNcPcR0K11Go3SqaQoacwuhZC51cVhWS+XF6eI6BbnSQhJ1oLnW5ALSORMk5V0J2laUeFOqSHyuLI/qUHDdJbcovmv1G/ZIf1CxxmFztwfDPsHBgfVTNNna6hubcaan3hdnwL4VpaCjgxOvha7EZR5jcw+5B2A/utue9lNVjGUyx2i9HVUVJU3zRhr+T2aFcarw+SkOYnNGTo8D91UXw+oMcuQ8DvoV0KycwQkt4zoFyIgQ4HuncRN2sHa6DnOcbknmsZHJgRve4NYC5xOgC6lHg8TLPqznd+QHQe/qg83uT2UeYNCNjsV6+tw3D8Qo3UdXTRSU7tchbbXkR0PdfJ8WZV+CPED46N5dAbSRtdwzxnk4bXG1/jzU1XrGEkpuFdKGiosVw+DEMPPlNnjD2jlryI5JT2eSGTJI2zgqhygl8uSx4XaFdU8JXJiYQuqw3jHcIN4j6T71CIRdpPUoWVUmGV9+v7padt7OCekYHtIPwPRIveWEseLPHyKsC+RmcOcNRyTDJrHdJucbqHOICqMsQwXB8QrxXVlDFLUNt6zf1W2uL2PxCfM9zukDMbqWyX5oHhLqtWyAjK4AtO46rlVZnfRVDaRwbUGJwicdg+xyn52Xzf8Apz41xoeJW+GsfbM978w/1DT50T2i+p5tNj9LGyD6ZU0oilHl3yO1H8KatpcG215LaqlyNacrSbrCOpLntBY3fqgdpomUsfWU7u6dkOlXD8b+Ij4a8N1eKRxNkljytja7bM4hoJ7C68n/AEtxfH8bfiOJYtLM+jkyiAyCzS/W+QflAtsg+jeak8Vw3DsYZG3E6Vs4jvkJJDm33sQQeQ+Sl0llmZkHQp/IpKWKmpY2xQxtysjZs0KspbILO5bFKMkLle5QbxMzGwTd7AAbBKQSBoOY2HVO0zC/7RwsPwj/ALQMMblaAhWQsqEniFg1umqIpXuGrlqYmTD7UZrK4OO57WanVQJWOFk/NR0+Y/ZD5lYGkpxtEPmVUISx31YVVlxunzSwfk/5H+Voykpratt73FAkwo9npnVbat1PCaprCxsxjGdrTuA7e3ZP+zUw6fqKPZ6ft+ooORjcjRStLnSt9Y+6Jvz6Ll0MjDWQ2lrD6xo9zrfFeqfSUsgs8Aj3lUbh9C0giNtx/cUC9XDT1lO+nq4Yp4JBZ8crA5rh3B0UANjjayNoaxos1rRYAdk97PT9vmVBpqbt+ooOa+5WQY4uXW9kpeYH6is3UlPf0s0/yP8AKBeIMYNdVJmYTa1kwKWD/b+pVm0lPf7ofMoKQFuYX1F12UrFSwBoIjA+JVnPcLgHZSqYQk2Su1zOvqhQUh4Qm4+FKQ8ITcfCtVGE3GUu5bz8ZS5QChCLoBCLougFnFK2UEt5K6hoDb2AF+id6zeWzPFkIui6NBSouhBIWjDqsuau3kgei4Asn7uWkXAFlJu5FL/iPvUI5lCg0h4Qm4+FKQ8ITcfCrULz8ZS5TE/GUuUEKCpQUEIQhAIQhAIQhAKQospCCVZu6qrM3CB2LgCyk3K1i+7Cyk3KKW5lCOZQoNIeFNx8KUh0Caj4VajCfjKwcExPxlYFBRClCCLIspUICyLIQgLIspQghClCAV2Kg3WjUDcXAFm/dy0ZwBZv3QLcz70K7Ghxf/khRUs0e9vRxW8Z0Kwn9FTfk8fULRjlUE3FdYFMSagLAoKqFKEEIshCAsiyEIBCEIBCFKAAWjVQLRg1QMN0aB2WTjurOdosJn5WE/JBvSNvGXHm4oWkDPLia3mBqhZVSqiMkRy8bdWpWKXMB16dF0SkKymcHGeAXP4mde6sovmuqOS0dQ13PXotfMVRJUIJUXQShVui6CyFW6LoLIVbougspVboBQXC0abLHMAodKBzQbOeq07fPqM34I9+56LCIyVTyyHQDRz+Q/8AV04YmxMDGCwClqtEIQoBQUIQI19LE+N81i2Ro4m8/euRBPI5gJOqEKxDAe626nMeqEKicx6qMx6oQgMx6ozHqhCAzHqjMeqEIDMeqMx6oQgzfK8XsVOHxisqHNmLsreQNroQg7sbGxtDGNDWjYBXQhZUIQhB/9k= " alt="TVs" class="category-image">
+                    <h3>AirPods</h3>
+                    <p>Wireless audio experience with AirPods.</p>
+                    <a href="airpods.html" class="view-btn">View AirPods</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="phone-category">
+            <h2>Available Products</h2>
+            <div class="product-list" id="productList">
+                <!-- Product cards will be dynamically generated here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Services Section -->
+    <section class="services"> 
+        <div class="service-box">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" height="30" width="30">
+                <path d="M48 0C21.5 0 0 21.5 0 48L0 368c0 26.5 21.5 48 48 48l16 0c0 53 43 96 96 96s96-43 96-96l128 0c0 53 43 96 96 96s96-43 96-96l32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l0-64 0-32 0-18.7c0-17-6.7-33.3-18.7-45.3L512 114.7c-12-12-28.3-18.7-45.3-18.7L416 96l0-48c0-26.5-21.5-48-48-48L48 0zM416 160l50.7 0L544 237.3l0 18.7-128 0 0-96zM112 416a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm368-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/>
+            </svg>
+            <span>Free shipping</span>
+            <p>Free shipping for all orders</p>
+        </div>
+        <div class="service-box">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="30" width="30">
+                <path d="M256 80C141.1 80 48 173.1 48 288l0 104c0 13.3-10.7 24-24 24s-24-10.7-24-24L0 288C0 146.6 114.6 32 256 32s256 114.6 256 256l0 104c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-104c0-114.9-93.1-208-208-208zM80 352c0-35.3 28.7-64 64-64l16 0c17.7 0 32 14.3 32 32l0 128c0 17.7-14.3 32-32 32l-16 0c-35.3 0-64-28.7-64-64l0-64zm288-64c35.3 0 64 28.7 64 64l0 64c0 35.3-28.7 64-64 64l-16 0c-17.7 0-32-14.3-32-32l0-128c0-17.7 14.3-32 32-32l16 0z"/>
+            </svg>
+            <span>Support 12hrs (9am to 9pm) a day</span>
+            <p>We support 12hrs (9am to 9pm) a day</p>
+        </div>
+        <div class="service-box">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="30" width="30">
+                <path d="M32 96l320 0 0-64c0-12.9  7.8-24.6 19.8-29.6s25.7-2.2 34.9 6.9l96 96c6 6 9.4 14.1 9.4 22.6s-3.4 16.6-9.4 22.6l-96 96c-9.2 9.2-22.9 11.9-34.9 6.9s-19.8-16.6-19.8-29.6l0-64L32 160c-17.7 0-32-14.3-32-32s14.3-32 32-32zM480 352c17.7 0 32 14.3 32 32s-14.3 32-32 32l-320 0 0 64c0 12.9-7.8 24.6-19.8 29.6s-25.7 2.2-34.9-6.9l-96-96c-6-6-9.4-14.1-9.4-22.6s3.4-16.6 9.4-22.6l96-96c9.2-9.2 22.9-11.9 34.9-6.9s19.8 16.6 19.8 29.6l0 64 320 0z"/>
+            </svg>
+            <span>EMI</span>
+            <p>Easy monthly installments available.</p>
+        </div>
+    </section>
+
+    <!-- Review Section -->
+    <section class="review" id="review">
+        <h1 class="heading">Customer's <span>Review</span></h1>
+        <div class="box-container">
+            <div class="box">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"Absolutely stunning arrangements! I ordered a bouquet for my mom's birthday and it was even more beautiful than the pictures. Fresh, fragrant, and delivered right on time. Highly recommend this flower shop!"</p>
+                <div class="user">
+                    <img src="../assets/pic-1.png" alt="">
+                    <div class="user-info">
+                        <h3>Priya R.</h3>
+                        <span>Happy Customers</span>
+                    </div>
+                </div>
+                <span class="fas fa-quote-right"></span>
+            </div>
+
+            <div class="box">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"From roses to lilies, every flower looked handpicked with love. The staff was super friendly and helped me choose the perfect bouquet for my anniversary. My wife couldn’t stop smiling!"</p>
+                <div class="user">
+                    <img src="../assets/pic-2.png" alt="">
+                    <div class="user-info">
+                        <h3>Arjun M</h3>
+                        <span>Happy Customers</span>
+                    </div>
+                </div>
+                <span class="fas fa-quote-right"></span>
+            </div>
+
+            <div class="box">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"The attention to detail is amazing. I’ve never seen such creative floral designs before. The packaging, freshness, and colors were top-notch. This is my go-to place for flowers now!"</p>
+                <div class="user">
+                    <img src="../assets/pic-3.png" alt="">
+                    <div class="user-info">
+                        <h3>Sneha K.</h3>
+                        <span>Happy Customers</span>
+                    </div>
+                </div>
+                <span class="fas fa-quote-right"></span>
+            </div>
+            <div class="box">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"What a charming little shop! The owner clearly cares about quality and customer service. I placed a last-minute order and they still delivered a gorgeous arrangement. 5 stars!"</p>
+                <div class="user">
+                    <img src="../assets/pic-4.jpg" alt="">
+                    <div class="user-info">
+                        <h3>Rahul S.</h3>
+                        <span>Happy Customers</span>
+                    </div>
+                </div>
+                <span class="fas fa-quote-right"></span>
+            </div>
+        </div>
+    </section>
+    <!-- Review Section Ends -->
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-company-box">
+                <a href="#" class="footer-logo">
+                    <img src="../assets/SbSC .png" alt="sbsc-Logo" width="200" height="auto">
+                </a>
+                <p>Online bouquet and flower shop website / we are Delhi based</p>
+                <div class="footer-social">
+                    <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="60" width="60">
+                            <path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/>
+                        </svg>
+                    </a>
+                    <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" height="60" width="60">
+                            <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+                        </svg>
+                    </a>
+                    <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="60" width="60">
+                            <path d="M459.4 151.7c.3 4.5 .3 9.1 .3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103v-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53 51.7 63.7 129.3 105.3 216.4 109.8-1.6-7.8-2.6-15.9-2.6-24 0-57.8 46.8-104.9 104.9-104.9 30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3z"/>
+                        </svg>
+                    </a>
+                    <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" height="60" width="60">
+                            <path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0  89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zm-317.5 213.5V175.2l142.7 81.2-142.7 81.2z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module">
+        import products from './product.js'; // Adjust the path as necessary
+
+        const productList = document.getElementById('productList');
+
+        products.forEach(product => {
+            const productCard = document.createElement('div');
+            productCard.className = 'product-card';
+            productCard.innerHTML = `
+                <a href="product-detail.html?id=${product.id}">
+                    <img src="${product.image}" alt="${product.title}">
+                </a>
+                <div>
+                    <h2>${product.title}</h2>
+                    <p>${product.description}</p>
+                    <p>Price: ${product.price}</p>
+                    <button class="add-to-cart" 
+                        data-name="${product.title}" 
+                        data-price="${product.price.replace('₹', '').trim()}" 
+                        data-image="${product.image}">
+                        Add to Cart
+                    </button>
+                </div>
+            `;
+            productList.appendChild(productCard);
+        });
+
+        // Add event listeners for "Add to Cart" buttons
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', (event) => {
+                const productName = event.target.getAttribute('data-name');
+                const productPrice = event.target.getAttribute('data-price');
+                const productImage = event.target.getAttribute('data-image');
+
+                // Create a product object
+                const product = {
+                    name: productName,
+                    price: productPrice,
+                    image: productImage
+                };
+
+                // Get existing cart items from local storage
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+                // Add the new product to the cart
+                cart.push(product);
+
+                // Save the updated cart back to local storage
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+                // Optional: Display a message that the product has been added to the cart
+                const message = document.createElement('div');
+                message.textContent = `${productName} has been added to your cart!`;
+                message.className = 'cart-message';
+                document.body.appendChild(message);
+                setTimeout(() => {
+                    message.remove();
+                }, 3000); // Remove message after 3 seconds
+            });
+        });
+
+        fetch('search.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('search-content').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading the HTML file:', error));
+    </script>
+
+    <script type="module" src="product.js"></script>
+    
+
+</body>
+</html>

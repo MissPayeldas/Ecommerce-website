@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f8f8f8;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  header {
+    background: #007bff;
+    color: white;
+    padding: 15px;
+    font-size: 24px;
+  }
+  .container {
+    max-width: 400px;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  .user-info {
+    margin-bottom: 20px;
+  }
+  .user-info h2 {
+    margin: 10px 0;
+  }
+  .links {
+    margin: 20px 0;
+  }
+  .links a {
+    display: block;
+    margin: 10px 0;
+    text-decoration: none;
+    color: #007bff;
+    font-size: 18px;
+  }
+  .logout-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  .logout-btn:hover {
+    background: #c82333;
+  }
