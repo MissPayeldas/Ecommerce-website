@@ -1,139 +1,194 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping Cart</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            padding: 20px;
-        }
-        
-        h2, h3 {
-            color: #333;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shopping Cart</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 20px;
+    }
 
-        th, td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
+    h1, h3 {
+      color: #333;
+    }
 
-        th {
-            background-color: #f2f2f2;
-        }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
 
-        tr:hover {
-            background-color: #f1f1f1;
-        }
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
 
-        button {
-            background-color: #28a745;
-            color: white;
-            padding: 10px;
-            border: none;
-            width: 100%;
-            cursor: pointer;
-        }
-        
-        button:hover {
-            background-color: #218838;
-        }
-    </style>
+    th {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #f9f9f9;
+    }
+
+    .product-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .product-info img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+    }
+
+    .quantity-btn {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 4px 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .remove-btn {
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      cursor: pointer;
+    }
+
+    #checkout-btn {
+      background-color: #28a745;
+      color: white;
+      padding: 10px;
+      border: none;
+      width: 100%;
+      margin-top: 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #checkout-btn:hover {
+      background-color: #218838;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Your Cart</h1>
-    </header>
+  <header>
+    <h1>Your Cart</h1>
+  </header>
 
-    <main>
-        <table id="cart-table">
-            <thead>
-                <tr>
-                    <th>Product</th>
-                    <th>Price</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody id="cart-items"></tbody>
-        </table>
-        <h3>Total: ₹<span id="total-price">0.00</span></h3>
-        <button id="checkout-btn">Proceed to Checkout</button>
-    </main>
+  <main>
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      <tbody id="cart-items"></tbody>
+    </table>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const cartTable = document.getElementById("cart-items");
-            const totalPriceEl = document.getElementById("total-price");
-            const checkoutBtn = document.getElementById("checkout-btn");
-        
-            let cart = JSON.parse(localStorage.getItem("cart")) || [];
-        
-            function updateCart() {
-                cartTable.innerHTML = ""; // Clear previous items
-                let total = 0;
-        
-                if (cart.length === 0) {
-                    cartTable.innerHTML = "<tr><td colspan='3'>Your cart is empty.</td></tr>";
-                    totalPriceEl.innerText = "0.00";
-                    return;
-                }
-        
-                cart.forEach((item, index) => {
-                    let price = parseFloat(item.price); // Ensure price is a number
-                    if (isNaN(price)) price = 0; // Default to 0 if NaN
+    <h3>Total: ₹<span id="total-price">0.00</span></h3>
+    <button id="checkout-btn">Proceed to Checkout</button>
+  </main>
 
-                    let row = document.createElement("tr");
-                    row.innerHTML = `
-                        <td><img src="${item.image}" width="50"> ${item.name}</td>
-                        <td>₹${price.toFixed(2)}</td>
-                        <td><button class="remove-item" data-index="${index}">Remove</button></td>
-                    `;
-                    cartTable.appendChild(row);
-                    total += price; // Add valid price to total
-                });
-        
-                totalPriceEl.innerText = total.toFixed(2); // Update total price display
-            }
-        
-            // Remove item from cart
-            cartTable.addEventListener("click", function (event) {
-                if (event.target.classList.contains("remove-item")) {
-                    const index = event.target.getAttribute("data-index");
-                    cart.splice(index, 1);
-                    localStorage.setItem("cart", JSON.stringify(cart));
-                    updateCart();
-                }
-            });
-        
-            checkoutBtn.addEventListener("click", function () {
-                if (cart.length === 0) {
-                    alert("Your cart is empty!");
-                } else {
-                    // Save cart items and total amount to localStorage
-                    localStorage.setItem("cartItems", JSON.stringify(cart));
-                    const totalAmount = cart.reduce((total, item) => {
-                        const price = parseFloat(item.price);
-                        return total + (isNaN(price) ? 0 : price);
-                    }, 0);
-                    localStorage.setItem("cartTotal", totalAmount.toFixed(2));
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const cartTable = document.getElementById("cart-items");
+      const totalPriceEl = document.getElementById("total-price");
+      const checkoutBtn = document.getElementById("checkout-btn");
 
-                    // Redirect to checkout page
-                    window.location.href = "checkout.html";
-                }
-            });
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-            updateCart(); // Call function to load items when page loads
+      function updateCart() {
+        cartTable.innerHTML = "";
+        let total = 0;
+
+        if (cart.length === 0) {
+          cartTable.innerHTML = "<tr><td colspan='5'>Your cart is empty.</td></tr>";
+          totalPriceEl.innerText = "0.00";
+          return;
+        }
+
+        cart.forEach((item, index) => {
+          let price = parseFloat(item.price);
+          let quantity = item.quantity || 1;
+          let subtotal = price * quantity;
+          total += subtotal;
+
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td class="product-info">
+              <img src="${item.image}" alt="${item.name}" />
+              <span>${item.name}</span>
+            </td>
+            <td>₹${price.toFixed(2)}</td>
+            <td>
+              <button class="quantity-btn" data-index="${index}" data-action="decrease">-</button>
+              <span>${quantity}</span>
+              <button class="quantity-btn" data-index="${index}" data-action="increase">+</button>
+            </td>
+            <td>₹${subtotal.toFixed(2)}</td>
+            <td><button class="remove-btn" data-index="${index}">Remove</button></td>
+          `;
+          cartTable.appendChild(row);
         });
-    </script>
+
+        totalPriceEl.innerText = total.toFixed(2);
+        localStorage.setItem("cart", JSON.stringify(cart));
+      }
+
+      // Remove item
+      cartTable.addEventListener("click", function (e) {
+        if (e.target.classList.contains("remove-btn")) {
+          const index = e.target.getAttribute("data-index");
+          cart.splice(index, 1);
+          updateCart();
+        }
+
+        // Quantity buttons
+        if (e.target.classList.contains("quantity-btn")) {
+          const index = e.target.getAttribute("data-index");
+          const action = e.target.getAttribute("data-action");
+          if (action === "increase") {
+            cart[index].quantity = (cart[index].quantity || 1) + 1;
+          } else if (action === "decrease" && cart[index].quantity > 1) {
+            cart[index].quantity -= 1;
+          }
+          updateCart();
+        }
+      });
+
+      checkoutBtn.addEventListener("click", function () {
+        if (cart.length === 0) {
+          alert("Your cart is empty!");
+          return;
+        }
+
+        localStorage.setItem("cartItems", JSON.stringify(cart));
+        const totalAmount = cart.reduce((total, item) => {
+          const price = parseFloat(item.price);
+          const quantity = item.quantity || 1;
+          return total + (isNaN(price) ? 0 : price * quantity);
+        }, 0);
+        localStorage.setItem("cartTotal", totalAmount.toFixed(2));
+
+        window.location.href = "checkout.html";
+      });
+
+      updateCart();
+    });
+  </script>
 </body>
 </html>
